@@ -35,8 +35,8 @@ exports.boardAdd = async (req, res, next) => {
         return res.status(200).send('success add')
     }
     
-    catch (err) {
-        return res.status(500).json(err)
+    catch (error) {
+        return res.status(500).json(error)
     }
 
 }
@@ -50,8 +50,8 @@ exports.boardUpdate = async (req, res, next) => {
         return res.status(200).send('success update')
     } 
     
-    catch (err) {
-        return res.status(500).json(err)
+    catch (error) {
+        return res.status(500).json(error)
     }
 
 }
@@ -61,7 +61,7 @@ exports.boardDelete = async (req, res, next) => {
     try{
         let del = await boardService.boardDelete(boardId)
         return res.status(200).send('success delete')
-    } catch (err) {
-        return res.status(500).json(err)
+    } catch (error) {
+        return res.status(500).json(error)
     }
 }

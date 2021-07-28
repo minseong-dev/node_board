@@ -1,0 +1,12 @@
+# modules
+node_modules/
+
+# images
+images/
+*.png
+*.jpg
+*.mp3
+*.mp4
+
+#files
+*.zip

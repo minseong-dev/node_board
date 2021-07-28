@@ -15,10 +15,10 @@ exports.boardList = async (req, res, next) => {
 
 exports.boardDetail = async (req, res, next) => {
     
-    let { boardId } = req.params
+    let { board_uid } = req.params
     
     try{
-        let detail = await boardService.boardDetail(boardId)
+        let detail = await boardService.boardDetail(board_uid)
         return res.status(200).json(detail)
     } 
     
@@ -30,8 +30,10 @@ exports.boardDetail = async (req, res, next) => {
 
 exports.boardAdd = async (req, res, next) => {
     
+    let { board_title, board_content, board_writer }
+
     try{
-        let add = await boardService.boardadd()
+        await boardService.boardAdd(board_title, board_content, board_writer)
         return res.status(200).send('success add')
     }
     
@@ -43,10 +45,10 @@ exports.boardAdd = async (req, res, next) => {
 
 exports.boardUpdate = async (req, res, next) => {
     
-    let { boardId } = req.params
+    let { board_title, board_content, board_writer, board_uid } = req.params
 
     try{
-        let update = await boardService.boardUpdate(boardId)
+        await boardService.boardUpdate(board_title, board_content, board_writer, board_uid)
         return res.status(200).send('success update')
     } 
     
@@ -57,11 +59,16 @@ exports.boardUpdate = async (req, res, next) => {
 }
 
 exports.boardDelete = async (req, res, next) => {
-    let { boardId } = req.params
+    
+    let { board_uid } = req.params
+    
     try{
-        let del = await boardService.boardDelete(boardId)
+        await boardService.boardDelete(board_uid)
         return res.status(200).send('success delete')
-    } catch (error) {
+    } 
+    
+    catch (error) {
         return res.status(500).json(error)
     }
+
 }

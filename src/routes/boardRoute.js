@@ -8,15 +8,15 @@ const board = new boardController()
 router.get('/', board.boardList);
 
 /* 상세보기 */
-router.get('/detail', board.boardDetail);
+router.get('/:boardId/detail', board.boardDetail);
 
 /* 추가 */
 router.post('/', board.boardAdd);
 
 /* 수정 */
-router.update('/', board.boardUpdate);
+router.patch('/:boardId', board.boardUpdate);
 
 /* 삭제 */
-router.delete('/', board.boardDelete);
+router.delete('/:boardId', board.boardDelete);
 
 module.exports = router;

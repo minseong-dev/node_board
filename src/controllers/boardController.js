@@ -1,6 +1,6 @@
 const boardService = require('../services/boardService')
 
-exports.boardList = async (req, res, next) => {
+exports.boardList = async (req, res) => {
     
     try{
         let list = await boardService.boardList()
@@ -13,7 +13,7 @@ exports.boardList = async (req, res, next) => {
 
 }
 
-exports.boardDetail = async (req, res, next) => {
+exports.boardDetail = async (req, res) => {
     
     let { board_uid } = req.params
     
@@ -28,9 +28,9 @@ exports.boardDetail = async (req, res, next) => {
 
 }
 
-exports.boardAdd = async (req, res, next) => {
+exports.boardAdd = async (req, res) => {
     
-    let { board_title, board_content, board_writer }
+    let { board_title, board_content, board_writer } = req.params
 
     try{
         await boardService.boardAdd(board_title, board_content, board_writer)
@@ -43,7 +43,7 @@ exports.boardAdd = async (req, res, next) => {
 
 }
 
-exports.boardUpdate = async (req, res, next) => {
+exports.boardUpdate = async (req, res) => {
     
     let { board_title, board_content, board_writer, board_uid } = req.params
 
@@ -58,7 +58,7 @@ exports.boardUpdate = async (req, res, next) => {
 
 }
 
-exports.boardDelete = async (req, res, next) => {
+exports.boardDelete = async (req, res) => {
     
     let { board_uid } = req.params
     

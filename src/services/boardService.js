@@ -1,15 +1,17 @@
-const db = require('../middleware/db')
+const db = require('../../middleware/db')
 const boardQuery = require('../queries/boardQuery')
 
 exports.boardList = async () => {
     
     try{
         let list = await db.query(boardQuery.boardList)
-        return list
+        console.log(list[0])
+        return list[0]
     } 
     
     catch (error) {
         console.log(error)
+        console.log('1')
         throw Error(error)
     }
 

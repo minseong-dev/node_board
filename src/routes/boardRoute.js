@@ -2,21 +2,20 @@ var express = require('express');
 var router = express.Router();
 
 const boardController = require('../controllers/boardController')
-const board = new boardController()
 
 /* 목록 */
-router.get('/', board.boardList);
+router.get('/', boardController.boardList);
 
 /* 상세보기 */
-router.get('/:boardId/detail', board.boardDetail);
+router.get('/:boardId/detail', boardController.boardDetail);
 
 /* 추가 */
-router.post('/', board.boardAdd);
+router.post('/', boardController.boardAdd);
 
 /* 수정 */
-router.patch('/:boardId', board.boardUpdate);
+router.patch('/:boardId', boardController.boardUpdate);
 
 /* 삭제 */
-router.delete('/:boardId', board.boardDelete);
+router.delete('/:boardId', boardController.boardDelete);
 
 module.exports = router;

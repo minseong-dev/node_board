@@ -4,6 +4,7 @@ exports.boardList = async (req, res) => {
     
     try{
         let list = await boardService.boardList()
+        console.log(list)
         return res.status(200).json(list)
     } 
     

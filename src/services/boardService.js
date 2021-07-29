@@ -5,13 +5,12 @@ exports.boardList = async () => {
     
     try{
         let list = await db.query(boardQuery.boardList)
-        console.log(list[0])
+        console.log(list)
         return list[0]
     } 
     
     catch (error) {
         console.log(error)
-        console.log('1')
         throw Error(error)
     }
 

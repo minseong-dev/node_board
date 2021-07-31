@@ -3,9 +3,12 @@ const boardService = require('../services/boardService')
 exports.boardList = async (req, res) => {
     
     try{
-        let list = await boardService.boardList()
-        console.log(list)
-        return res.status(200).json(list)
+        let board_info = await boardService.boardList()
+
+        //return res.status(200).json(list)
+        return res.render('board', {
+            board_info: board_info 
+        })
     } 
     
     catch (error) {

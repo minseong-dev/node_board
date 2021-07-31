@@ -7,7 +7,7 @@ const boardController = require('../controllers/boardController')
 router.get('/', boardController.boardList);
 
 /* 상세보기 */
-router.get('/:boardId/detail', boardController.boardDetail);
+router.get('/detail/:boardId', boardController.boardDetail);
 
 /* 추가 */
 router.post('/', boardController.boardAdd);

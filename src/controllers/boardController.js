@@ -22,8 +22,10 @@ exports.boardDetail = async (req, res) => {
     let { board_uid } = req.params
     
     try{
-        let detail = await boardService.boardDetail(board_uid)
-        return res.status(200).json(detail)
+        let detail_info = await boardService.boardDetail(board_uid)
+        return res.render('detail', {
+            detail_info: detail_info
+        })
     } 
     
     catch (error) {

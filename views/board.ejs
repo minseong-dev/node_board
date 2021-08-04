@@ -7,7 +7,7 @@
   <title>Board</title>
 </head>
 <body>
-  
+
   <h1>게시판</h1>
 
     <table border="1">
@@ -22,7 +22,7 @@
       <tbody>
       <% for(let board of board_info){ %>
         <tr>
-          <td><a href=""><%= board_info.indexOf(board) + 1 %></a></td>
+          <td><a href="/detail/<%= board.board_uid %>"><%= board_info.indexOf(board) + 1 %></a></td>
           <td><%= board.board_title %></td>
           <td><%= board.board_writer %></td>
         </tr>

@@ -10,7 +10,10 @@ router.get('/', boardController.boardList);
 router.get('/detail/:board_uid', boardController.boardDetail);
 
 /* 추가 */
-router.post('/', boardController.boardAdd);
+router.post('/boardAdd', boardController.boardAdd);
+
+/* 추가 페이지 */
+router.get('/boardAdd', boardController.boardAddPage);
 
 /* 수정 */
 router.patch('/:board_uid', boardController.boardUpdate);

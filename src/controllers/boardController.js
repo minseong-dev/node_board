@@ -36,13 +36,29 @@ exports.boardDetail = async (req, res) => {
 
 exports.boardAdd = async (req, res) => {
     
-    let { board_title, board_content, board_writer } = req.params
+    const board_title = req.body.board_title;
+    const board_content = req.body.board_content;
+    const board_writer = req.body.board_writer;
+
+    // const { board_title, board_content, board_writer } = req.body
 
     try{
         await boardService.boardAdd(board_title, board_content, board_writer)
         return res.status(200).send('success add')
     }
     
+    catch (error) {
+        return res.status(500).json(error)
+    }
+
+}
+
+exports.boardAddPage = async (req, res) => {
+    
+    try{
+        return res.render('create')
+    }
+
     catch (error) {
         return res.status(500).json(error)
     }

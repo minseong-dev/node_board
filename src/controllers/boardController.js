@@ -100,7 +100,7 @@ exports.boardDelete = async (req, res) => {
     
     try{
         await boardService.boardDelete(board_uid)
-        return res.status(200).send('success delete')
+        return res.redirect('/')
     } 
     
     catch (error) {

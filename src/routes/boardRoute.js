@@ -22,6 +22,6 @@ router.patch('/boardUpdate/:board_uid', boardController.boardUpdate);
 router.get('/boardUpdate/:board_uid', boardController.boardUpdatePage);
 
 /* 삭제 */
-router.delete('/:board_uid', boardController.boardDelete);
+router.delete('/boardDelete/:board_uid', boardController.boardDelete);
 
 module.exports = router;

@@ -68,7 +68,7 @@ exports.boardUpdate = async (req, res) => {
 
     try{
         await boardService.boardUpdate(board_title, board_content, board_writer, board_uid)
-        return res.status(200).send('success update')
+        return res.redirect('/')
     } 
     
     catch (error) {

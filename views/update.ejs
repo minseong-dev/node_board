@@ -9,18 +9,18 @@
 <body>
 
     <form
-        action='/boardUpdate/<%= detail_info[0].board_uid %>'
-        method='patch'
+        action='/boardUpdate/<%= detail_info[0].board_uid %>?_method=PATCH'
+        method='post'
     >
 
         제목<br>
-        <input name='board_title' type='text' value='<%= detail_info[0].board_title %>'><br>
+        <input name='board_title' type='text' value='<%= detail_info[0].board_title %>'/><br>
         <br>
         작성자<br>
-        <input name='board_writer' type='text' value='<%= detail_info[0].board_writer %>'><br>
+        <input name='board_writer' type='text' value='<%= detail_info[0].board_writer %>'/><br>
         <br>
         내용<br>
-        <input name='board_content' type='text' value='<%= detail_info[0].board_content %>'><br>
+        <input name='board_content' type='text' value='<%= detail_info[0].board_content %>'/><br>
         <br>
         <input type='submit' value='수정'>
 

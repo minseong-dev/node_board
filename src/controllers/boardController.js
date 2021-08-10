@@ -40,7 +40,7 @@ exports.boardAdd = async (req, res) => {
 
     try{
         await boardService.boardAdd(board_title, board_content, board_writer)
-        return res.status(200).send('success add')
+        return res.redirect('/')
     }
     
     catch (error) {

@@ -63,13 +63,31 @@ exports.boardAddPage = async (req, res) => {
 
 exports.boardUpdate = async (req, res) => {
     
-    let { board_title, board_content, board_writer, board_uid } = req.params
+    const { board_title, board_content, board_writer } = req.body
+    const { board_uid } = req.params
 
     try{
         await boardService.boardUpdate(board_title, board_content, board_writer, board_uid)
         return res.status(200).send('success update')
     } 
     
+    catch (error) {
+        return res.status(500).json(error)
+    }
+
+}
+
+exports.boardUpdatePage = async (req, res) => {
+    
+    let { board_uid } = req.params
+
+    try{
+        let detail_info = await boardService.boardDetail(board_uid)
+        return res.render('update', {
+            detail_info: detail_info
+        })
+    }
+
     catch (error) {
         return res.status(500).json(error)
     }

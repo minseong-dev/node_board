@@ -16,7 +16,10 @@ router.post('/boardAdd', boardController.boardAdd);
 router.get('/boardAdd', boardController.boardAddPage);
 
 /* 수정 */
-router.patch('/:board_uid', boardController.boardUpdate);
+router.patch('/boardUpdate/:board_uid', boardController.boardUpdate);
+
+/* 수정 페이지 */
+router.get('/boardUpdate/:board_uid', boardController.boardUpdatePage);
 
 /* 삭제 */
 router.delete('/:board_uid', boardController.boardDelete);

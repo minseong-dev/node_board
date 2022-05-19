@@ -1,11 +1,11 @@
 const boardService = require('../services/boardService')
 
-exports.boardList = async (req, res) => {
+exports.selectAllPosts = async (req, res) => {
     
     try{
-        let board_info = await boardService.boardList()
+        let posts = await boardService.selectAllPosts()
         return res.render('board', {
-            board_info: board_info 
+            posts: posts 
         })
     } 
     
@@ -15,14 +15,14 @@ exports.boardList = async (req, res) => {
 
 }
 
-exports.boardDetail = async (req, res) => {
+exports.selectPostDetail = async (req, res) => {
     
-    let { board_uid } = req.params
+    let { post_uid } = req.params
     
     try{
-        let detail_info = await boardService.boardDetail(board_uid)
+        let postDetail = await boardService.selectPostDetail(post_uid)
         return res.render('detail', {
-            detail_info: detail_info
+            postDetail: postDetail
         })
     } 
     
@@ -32,12 +32,12 @@ exports.boardDetail = async (req, res) => {
 
 }
 
-exports.boardAdd = async (req, res) => {
+exports.writePost = async (req, res) => {
     
-    const { board_title, board_content, board_writer } = req.body
+    const { post_title, post_content, post_writer } = req.body
 
     try{
-        await boardService.boardAdd(board_title, board_content, board_writer)
+        await boardService.writePost(post_title, post_content, post_writer)
         return res.redirect('/')
     }
     
@@ -47,10 +47,10 @@ exports.boardAdd = async (req, res) => {
 
 }
 
-exports.boardAddPage = async (req, res) => {
+exports.writePage = async (req, res) => {
     
     try{
-        return res.render('create')
+        return res.render('write')
     }
 
     catch (error) {
@@ -59,13 +59,13 @@ exports.boardAddPage = async (req, res) => {
 
 }
 
-exports.boardUpdate = async (req, res) => {
+exports.modifyPost = async (req, res) => {
     
-    const { board_title, board_content, board_writer } = req.body
-    const { board_uid } = req.params
+    const { post_title, post_content, post_writer } = req.body
+    const { post_uid } = req.params
 
     try{
-        await boardService.boardUpdate(board_title, board_content, board_writer, board_uid)
+        await boardService.modifyPost(post_title, post_content, post_writer, post_uid)
         return res.redirect('/')
     } 
     
@@ -75,14 +75,14 @@ exports.boardUpdate = async (req, res) => {
 
 }
 
-exports.boardUpdatePage = async (req, res) => {
+exports.modifyPage = async (req, res) => {
     
-    let { board_uid } = req.params
+    let { post_uid } = req.params
 
     try{
-        let detail_info = await boardService.boardDetail(board_uid)
-        return res.render('update', {
-            detail_info: detail_info
+        let postDetail = await boardService.selectPostDetail(post_uid)
+        return res.render('modify', {
+            postDetail: postDetail
         })
     }
 
@@ -92,12 +92,12 @@ exports.boardUpdatePage = async (req, res) => {
 
 }
 
-exports.boardDelete = async (req, res) => {
+exports.deletePost = async (req, res) => {
     
-    let { board_uid } = req.params
+    let { post_uid } = req.params
     
     try{
-        await boardService.boardDelete(board_uid)
+        await boardService.deletePost(post_uid)
         return res.redirect('/')
     } 
     

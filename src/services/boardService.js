@@ -1,11 +1,12 @@
-const db = require('../../middleware/db')
+const res = require('express/lib/response')
+const pool = require('../../middleware/db')
 const boardQuery = require('../queries/boardQuery')
 
-exports.boardList = async () => {
+exports.selectAllPosts = async () => {
     
     try{
-        let list = await db.query(boardQuery.boardList)
-        return list[0]
+        let posts = await pool.query(boardQuery.selectAllPosts)
+        return posts[0]
     } 
     
     catch (error) {
@@ -15,10 +16,10 @@ exports.boardList = async () => {
 
 }
 
-exports.boardDetail = async (board_uid) => {
+exports.selectPostDetail = async (post_uid) => {
     
     try{
-        let detail = await db.query(boardQuery.boardDetail, [board_uid])
+        let detail = await pool.query(boardQuery.selectPostDetail, [post_uid])
         return detail[0]
     } 
     
@@ -29,11 +30,11 @@ exports.boardDetail = async (board_uid) => {
 
 }
 
-exports.boardAdd = async (board_title, board_content, board_writer) => {
+exports.writePost = async (post_title, post_content, post_writer) => {
     
     try{
-        let add = await db.query(boardQuery.boardAdd, [board_title, board_content, board_writer])
-        return add[0]
+        let result = await pool.query(boardQuery.writePost, [post_title, post_content, post_writer])
+        return result
     } 
     
     catch (error) {
@@ -43,11 +44,11 @@ exports.boardAdd = async (board_title, board_content, board_writer) => {
 
 }
 
-exports.boardUpdate = async (board_title, board_content, board_writer, board_uid) => {
+exports.modifyPost = async (post_title, post_content, post_writer, post_uid) => {
     
     try{
-        let update = await db.query(boardQuery.boardUpdate, [board_title, board_content, board_writer, board_uid])
-        return update[0]
+        let result = await pool.query(boardQuery.modifyPost, [post_title, post_content, post_writer, post_uid])
+        return result
     } 
     
     catch (error) {
@@ -57,11 +58,11 @@ exports.boardUpdate = async (board_title, board_content, board_writer, board_uid
 
 }
 
-exports.boardDelete = async (board_uid) => {
+exports.deletePost = async (post_uid) => {
     
     try{
-        let del = await db.query(boardQuery.boardDelete, [board_uid])
-        return del[0]
+        let result = await pool.query(boardQuery.deletePost, [post_uid])
+        return result
     } 
     
     catch (error) {

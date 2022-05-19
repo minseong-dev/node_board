@@ -13,18 +13,18 @@
     <table border="1">
       <thead>
         <tr>
-          <td>번호</td>
+          <td>#</td>
           <td>제목</td>
           <td>글쓴이</td>
         </tr>
       </thead>
 
       <tbody>
-      <% for(let board of board_info){ %>
+      <% for(let post of posts){ %>
         <tr>
-          <td><a href="/detail/<%= board.board_uid %>"><%= board_info.indexOf(board) + 1 %></a></td>
-          <td><%= board.board_title %></td>
-          <td><%= board.board_writer %></td>
+          <td><a href="/posts/<%= post.post_uid %>"><%= posts.indexOf(post) + 1 %></a></td>
+          <td><%= post.post_title %></td>
+          <td><%= post.post_writer %></td>
         </tr>
 
       <%}%>
@@ -32,7 +32,7 @@
     </table>
 
     <br>
-    <button onclick="location.href='/boardAdd'">추가</button>
+    <button onclick="location.href='/write'">글 쓰기</button>
 
 </body>
 </html>

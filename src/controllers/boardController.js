@@ -69,7 +69,10 @@ exports.modifyPost = async (req, res) => {
 
     try{
         await boardService.modifyPost(post_title, post_content, post_writer, post_uid)
-        return res.redirect('/')
+        let postDetail = await boardService.selectPostDetail(post_uid)
+        return res.render('detail', {
+            postDetail: postDetail
+        })
     } 
     
     catch (error) {

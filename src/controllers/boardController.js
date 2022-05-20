@@ -37,8 +37,11 @@ exports.writePost = async (req, res) => {
     const { post_title, post_content, post_writer } = req.body
 
     try{
-        await boardService.writePost(post_title, post_content, post_writer)
-        return res.redirect('/')
+        let results = await boardService.writePost(post_title, post_content, post_writer)
+        let postDetail = await boardService.selectPostDetail(results[0].insertId)
+        return res.render('detail', {
+            postDetail: postDetail
+        })
     }
     
     catch (error) {
